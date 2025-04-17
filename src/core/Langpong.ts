@@ -72,16 +72,16 @@ export class Langpong {
     this.app.post("/getPlugin", async (req, res) => {
       try {
         const {  pluginName } = req.body;
-        const result = await getPlugin(pluginName)
+        const result = await this.store.getPlugin(pluginName)
         res.json({ success: true, result });
       } catch (err: any) {
         res.status(400).json({ success: false,  error: err.error,history:err.history});
       }
     });
 
-    this.app.post("/getPlugin", async (req, res) => {
+    this.app.post("/getPlugins", async (req, res) => {
       try {
-        const result = await getPlugins()
+        const result = await this.store.getPlugins()
         res.json({ success: true, result });
       } catch (err: any) {
         res.status(400).json({ success: false,  error: err.error,history:err.history});

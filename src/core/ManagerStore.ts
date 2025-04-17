@@ -7,7 +7,7 @@ import winston from "winston";
 import { v4 as uuidv4 } from "uuid";
 
 import jwt from "jsonwebtoken";
-import { langcode,Langcode,PluginConfigs, plugins } from "langcode";
+import { getPlugin, getPlugins, langcode,Langcode,PluginConfigs, PluginDescriptions, plugins } from "langcode";
 import { Chain, ChainConfig, ChainRunTask, ManagerEntry, ManagerStoreOptions, ManagerTask, PluginRunTask } from "../types";
 
 // Bu projenin gerçeğinde muhtemelen .env / config üzerinden SECRET alacaksın
@@ -192,7 +192,12 @@ export class ManagerStore extends EventEmitter {
     return removed;
   }
 
-  public async getPlugin(sessionId: string, pluginName: plugins, pluginParams: any): Promise<any>{
+  public async getPlugin(pluginName: plugins): Promise<PluginDescriptions | null>{
+        return await getPlugin(pluginName)
+  }
+
+  public async getPlugins(): Promise<PluginDescriptions[]>{
+        return await getPlugins()
 
   }
 

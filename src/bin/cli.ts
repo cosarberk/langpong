@@ -10,8 +10,8 @@ const program = new Command();
 
 program
   .name("Langpong")
-  .description("CLI to launch the Langcode Express Server")
-  .version("1.0.0");
+  .description("CLI to launch the Langcode Api Server")
+  .version("1.0.3");
 
 // Burada kısa isimleri ekliyoruz:
 // -c => --config
