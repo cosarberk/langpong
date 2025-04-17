@@ -1,0 +1,54 @@
+{
+  "name": "langpong",
+  "version": "1.0.1",
+  "description": "langcode api server version",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "langpong": "./dist/bin/cli.js"
+  },
+  "engines": {
+    "node": ">=18",
+    "typescript": ">=4.9"
+  },
+  "scripts": {
+    "postbuild": "chmod +x dist/bin/cli.js",
+    "build": "rm -rf dist && tsc && npm run postbuild",
+    "test": "ts-node-dev src/test/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cosarberk/langpong.git"
+  },
+  "keywords": [
+    "lanpong",
+    "langcode",
+    "langchain",
+    "langserve",
+    "langraph",
+    "langflow"
+  ],
+  "author": "Berk COŞAR <lookmainpoint@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cosarberk/langpong/issues"
+  },
+  "homepage": "https://github.com/cosarberk/langpong#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "langcode": "^1.0.22",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.15",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3"
+  }
+}
