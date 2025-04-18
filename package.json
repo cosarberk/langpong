@@ -1,6 +1,6 @@
 {
   "name": "langpong",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "langcode api server version",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,10 @@
   "scripts": {
     "postbuild": "chmod +x dist/bin/cli.js",
     "build": "rm -rf dist && tsc && npm run postbuild",
-    "test": "ts-node-dev src/test/index.ts"
+    "build:docker": "docker build -t langpong .",
+    "run:docker": "docker run -p 3000:3000 langpong",
+    "test": "ts-node-dev src/test/index.ts",
+    "start": "node dist/bin/cli.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +40,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "langcode": "^1.0.22",
+    "langcode": "^1.0.31",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },

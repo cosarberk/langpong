@@ -6,7 +6,7 @@ langcode api server version
 
 # Langpong CLI
 
-Langpong CLI is a command-line interface tool designed to launch and configure the Langcode API Server. It supports flexible runtime configurations through CLI flags and external config files, making it easy to tailor deployments for various environments.
+Langpong is a command-line interface tool designed to launch and configure the Langcode API Server. It supports flexible runtime configurations through CLI flags and external config files, making it easy to tailor deployments for various environments.
 
 ---
 
@@ -14,7 +14,7 @@ Langpong CLI is a command-line interface tool designed to launch and configure t
 
 ### Installation
 ```bash
-npm install -g langpong-cli
+npm install -g langpong
 ```
 
 ### Usage
@@ -72,16 +72,6 @@ Any CLI arguments will override the values provided in the configuration file.
 
 ---
 
-## 🛠️ Development
-
-Clone the project and link it globally for development:
-
-```bash
-git clone https://github.com/your-org/langpong-cli.git
-cd langpong-cli
-npm install
-npm link
-```
 
 Run using:
 ```bash
@@ -97,7 +87,51 @@ langpong -p 8080 -H 0.0.0.0 --maxConcurrentRunsPerManager 5 --logLevel debug
 ```
 
 This command starts the server on port 8080, accessible on all interfaces, with concurrency and logging settings customized.
+---
 
+## 🐳 Docker Support
+
+### Pull from Docker Hub
+```bash
+docker pull yourdockerhubusername/langpong:latest
+```
+
+### Run Manually
+```bash
+docker run -p 3000:3000 yourdockerhubusername/langpong:latest \
+  --config /app/config.json
+```
+
+To mount a config file:
+```bash
+docker run -p 3000:3000 \
+  -v $(pwd)/config.json:/app/config.json \
+  yourdockerhubusername/langpong:latest \
+  --config /app/config.json
+```
+
+---
+
+## 🧱 Docker Compose Example
+
+Create a `docker-compose.yml` file like this:
+
+```yaml
+version: '3.8'
+
+services:
+  langpong:
+    image: yourdockerhubusername/langpong:latest
+    container_name: langpong-server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config.json:/app/config.json:ro
+    command: ["--config", "/app/config.json"]
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=debug
+```
 ---
 
 ## 📦 Version
@@ -108,7 +142,7 @@ This command starts the server on port 8080, accessible on all interfaces, with 
 
 ## 📧 Support
 
-For bug reports, suggestions, or feature requests, please open an issue on the [GitHub repository](https://github.com/your-org/langpong-cli/issues).
+For bug reports, suggestions, or feature requests, please open an issue on the [GitHub repository](https://github.com/cosarberk/langpong/issues).
 
 ---
 
