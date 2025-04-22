@@ -11,7 +11,7 @@ const program = new Command();
 program
   .name("Langpong")
   .description("CLI to launch the Langcode Api Server")
-  .version("1.0.3");
+  .version("1.0.7");
 
 // Burada kısa isimleri ekliyoruz:
 // -c => --config

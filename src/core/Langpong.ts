@@ -65,7 +65,22 @@ export class Langpong {
         const result = await this.store.runPlugin(sessionId, pluginName, pluginParams);
         res.json({ success: true, result });
       } catch (err: any) {
-        res.status(400).json({ success: false,  error: err.error,history:err.history});
+        res.status(400).json({ success: false,  error: err.error|| err.message,history:err.history});
+      }
+    });
+
+    this.app.post("/autorunPlugin", async (req, res) => {
+      try {
+        const {pluginConfig, pluginParams } = req.body;
+        if (!pluginConfig) {
+          res.status(400).json({ success: false, error: "pluginConfig gereklidir." });
+        }
+        const sessionId = await this.store.createManagerAsync([pluginConfig]);
+        const result = await this.store.runPlugin(sessionId, pluginConfig.pluginName, pluginParams);
+        this.store.removeManager(sessionId);
+        res.json({ success: true, result });
+      } catch (err: any) {
+        res.status(400).json({ success: false, error: err.error || err.message, history: err.history });
       }
     });
 
