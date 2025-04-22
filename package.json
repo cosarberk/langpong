@@ -41,7 +41,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "langcode": "^1.0.36",
+    "langcode": "^1.0.38",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
