@@ -1,6 +1,6 @@
 {
   "name": "langpong",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "langcode api server version",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -41,7 +41,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "langcode": "^1.0.38",
+    "langcode": "^1.0.40",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
